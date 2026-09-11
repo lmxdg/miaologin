@@ -1,0 +1,78 @@
+# MiaoLogin 配置文件 v1.2 喵
+
+# ========== 密码设置 ==========
+password:
+  # 最短密码长度
+  min-length: 4
+  # 最长密码长度
+  max-length: 32
+
+# ========== 登录设置 ==========
+login:
+  # 登录超时时间 (秒)，超过此时间未登录将被踢出
+  # 踢出理由: "登录超时了喵"
+  # 设为 0 表示禁用超时
+  # 默认 120 秒
+  timeout-seconds: 120
+  # 密码错误次数上限，超过此次数将被踢出
+  # 踢出理由: "密码错误次数太多了喵"
+  # 设为 0 表示禁用踢出 (允许无限次错误)
+  # 默认 3 次
+  max-failures: 3
+  # 隐藏聊天输入 (取消未登录玩家的聊天事件，避免密码泄露)
+  hide-chat-input: true
+
+# ========== 限制设置 ==========
+restrictions:
+  # 阻止未登录玩家使用命令
+  block-commands: true
+  # 允许未登录玩家使用的命令白名单
+  allowed-commands:
+    - miaologin
+    - miao
+    - login
+    - register
+    - l
+
+# ========== 多语言设置 ==========
+language:
+  # 默认语言 (当玩家客户端语言无法识别时使用)
+  # 可选: zh_CN (简体中文), zh_TW (繁体中文), en_US (英语), ja_JP (日语)
+  default: "zh_CN"
+  # 是否按客户端语言自动选择
+  # true: 根据玩家客户端语言选择
+  # false: 所有人都用默认语言
+  auto-detect: true
+
+# ========== 存储设置 ==========
+storage:
+  # 存储后端: yaml 或 sqlite
+  #   yaml   - 文件存储 (accounts.yml)，适合小型服务器
+  #   sqlite - 数据库存储 (data.db)，性能更好，适合大型服务器
+  backend: "sqlite"
+
+# ========== 消息前缀 (向后兼容，实际由 lang 文件决定) ==========
+messages:
+  prefix: "&d[&5MiaoLogin&d] &r"
+
+# ========== 喵尾音设置 ==========
+neko-suffix:
+  # 是否移除消息末尾的喵尾音
+  # true : 所有 GUI 文字、插件消息、欢迎语、规则中的 "喵" / "喵~" / "meow" 等尾音会被自动移除
+  # false: 保留喵尾音 (默认)
+  remove: false
+
+# ========== AuthMe 接管模式 ==========
+authme-takeover:
+  # 是否启用 AuthMe 接管模式
+  # 启用后，如果检测到服务器安装了 AuthMe 插件，会自动:
+  #   1. 读取 AuthMe 的 SQLite 数据库 (plugins/AuthMe/authme.db)
+  #   2. 玩家可以用原 AuthMe 密码登录 MiaoLogin
+  #   3. 玩家首次登录成功后，账户会自动迁移到 MiaoLogin 本地存储
+  #   4. 自动禁用 AuthMe 插件，避免 AuthMe 继续处理登录和发送消息
+  # 即使关闭此选项，只要检测到 AuthMe 也会自动启用接管
+  enabled: true
+  # 接管后是否自动禁用 AuthMe 插件本身
+  # true : MiaoLogin 完全接管，AuthMe 不再运行 (推荐)
+  # false: 只读取 AuthMe 数据，AuthMe 仍会处理登录并发送消息
+  disable-authme-plugin: true

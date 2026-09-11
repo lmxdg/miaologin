@@ -1,0 +1,41 @@
+name: MiaoLogin
+version: ${project.version}
+main: com.miao.login.MiaoLogin
+author: Neko
+description: 登录插件 v1.8，多语言支持(英/繁中/简中/日)，SQLite/YAML 存储，带箱子 GUI 界面喵。兼容 Spigot/Paper/Purpur 1.7-26.2。支持自动接管 AuthMe 并自动禁用 AuthMe 插件。修复空中无法登录问题。支持进服欢迎语和服务器规则。支持去除喵尾音。
+
+# 软依赖: AuthMe 存在时自动启用接管模式
+softdepend: [AuthMe]
+
+commands:
+  miaologin:
+    description: MiaoLogin 管理命令
+    usage: /miaologin help
+    aliases: [miao, miaoadmin]
+    permission: miaologin.admin
+
+permissions:
+  miaologin.admin:
+    description: 允许使用 MiaoLogin 管理命令
+    default: op
+  miaologin.admin.reload:
+    description: 允许重新加载配置
+    default: op
+  miaologin.admin.info:
+    description: 允许查看玩家账户信息
+    default: op
+  miaologin.admin.reset:
+    description: 允许重置玩家密码
+    default: op
+  miaologin.admin.unregister:
+    description: 允许删除玩家账户
+    default: op
+  miaologin.admin.list:
+    description: 允许查看已注册玩家列表
+    default: op
+  miaologin.admin.takeover:
+    description: 允许查看 AuthMe 接管状态
+    default: op
+  miaologin.bypass:
+    description: 跳过登录验证 (适用于管理员)
+    default: op

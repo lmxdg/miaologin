@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+    <proxies>
+        <proxy>
+            <id>http-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>127.0.0.1</host>
+            <port>18080</port>
+            <nonProxyHosts>localhost|127.0.0.1|.svc|.cluster.local</nonProxyHosts>
+        </proxy>
+        <proxy>
+            <id>https-proxy</id>
+            <active>true</active>
+            <protocol>https</protocol>
+            <host>127.0.0.1</host>
+            <port>18080</port>
+            <nonProxyHosts>localhost|127.0.0.1|.svc|.cluster.local</nonProxyHosts>
+        </proxy>
+    </proxies>
+
+    <mirrors>
+        <mirror>
+            <id>aliyun-public</id>
+            <name>Aliyun Public</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        <mirror>
+            <id>aliyun-snapshots</id>
+            <name>Aliyun Snapshots</name>
+            <url>https://maven.aliyun.com/repository/public</url>
+            <mirrorOf>sonatype</mirrorOf>
+        </mirror>
+    </mirrors>
+</settings>
